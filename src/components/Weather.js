@@ -12,7 +12,7 @@ import { WeatherItem } from './WeatherItem';
 export const Weather = () => {
     const [geoState, { onChange }] = useGeolocation({
         enableHighAccuracy: false,
-    }); 
+    });
 
     const [isPositionSet, setIsPositionSet] = useState(false);
 
@@ -54,15 +54,15 @@ export const Weather = () => {
     }, [geoState, isPositionSet])
 
     return (
-        <div className="text-t-dim flex justify-center text-xl">
+        <div className="text-muted flex justify-center text-xl">
             {apiError ? <FeatherIcon icon="alert-circle" /> : ''}
-            {isLoaded ? items.map(item => 
-                <WeatherItem 
-                    key={item.key} 
-                    icon={item.icon} 
+            {isLoaded ? items.map(item =>
+                <WeatherItem
+                    key={item.key}
+                    icon={item.icon}
                     time={item.time}
-                    temperature={item.temperature} 
-                    delay={item.key} 
+                    temperature={item.temperature}
+                    delay={item.key}
                 />
             ) : <FeatherIcon icon="compass" />}
         </div>

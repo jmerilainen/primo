@@ -6,7 +6,7 @@ export const DateValue = () => {
 
     return (
         <div>
-            <span className="text-sm text-t-dim">{value}</span>
+            <span className="text-sm text-muted">{value}</span>
         </div>
     );
 }

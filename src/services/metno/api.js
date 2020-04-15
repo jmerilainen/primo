@@ -1,3 +1,5 @@
+// Documentation: https://api.met.no/weatherapi/documentation
+
 const BASE_URI = 'https://api.met.no/weatherapi';
 
 const queryString = (params = {}) => Object

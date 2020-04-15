@@ -5,11 +5,12 @@ module.exports = {
         mono: ['Source Code Pro', 'monospace'],
       },
       colors: {
-        't-bg': "#011627",
-        't-primary': "#c792ea", 
-        't-secondary': "#f78c6c",
-        't-text': "#abb2bf",
-        't-dim': "#5c6370",
+        background: "var(--color-background)",
+        foreground: "var(--color-foreground)",
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        accent: "var(--color-accent)",
+        muted: "var(--color-muted)",
       }
     }
   },
