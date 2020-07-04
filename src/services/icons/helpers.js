@@ -12,9 +12,18 @@ const icons = [
         icon: 'cloud-snow',
         alias: ['snow', 'lightsnow', 'sleet', 'lightsleet'],
     },
+    {
+        icon: 'cloud-rain',
+        alias: ['rain', 'heavyrain'],
+    },
+    {
+        icon: 'cloud-drizzle',
+        alias: ['lightrain'],
+    },
 ];
 
 export const transformIcon = icon => {
+    console.log(icon);
     const data = icons.find(item => {
         return item.alias.includes(icon);
     });

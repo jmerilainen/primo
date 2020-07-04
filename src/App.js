@@ -8,6 +8,8 @@ import { Modal } from './components/Modal';
 import { Backdrop } from './components/Backdrop';
 import { useState } from 'react';
 
+import { useTheme } from './services/theme/useTheme';
+
 import './App.css';
 
 function App() {
@@ -17,14 +19,31 @@ function App() {
     const openModal = () => setActiveModal(true);
     const closeModel = () => setActiveModal(false);
 
+    // eslint-disable-next-line
+    const [theme, setTheme] = useTheme('night-owl');
+
+    const themes = [
+        'night-owl',
+        'snazzy',
+        'github',
+        'nord',
+    ];
+
+    const onChangeTheme = event => setTheme(event.target.value);
+
     return (
-        <div className="theme-night-owl bg-background min-h-screen flex flex-col">
+        <div className="bg-background min-h-screen flex flex-col">
             <div className="p-12 text-white text-xs flex justify-end">
-                <div className="opacity-25">
+                <button className="opacity-25">
                     <FeatherIcon icon={! activeModal ? 'menu' : 'x'} onClick={openModal} />
-                </div>
+                </button>
                 {activeModal ? <>
-                    <Modal onClick={closeModel} />
+                    <Modal onClick={closeModel}>
+                        <label htmlFor="theme">Theme</label>
+                        <select id="theme" name="theme" id="theme" onChange={onChangeTheme}>
+                            {themes.map(value => <option value={value} selected={value === theme}>{value}</option>)}
+                        </select>
+                    </Modal>
                     <Backdrop />
                 </> : ''}
 
@@ -32,7 +51,7 @@ function App() {
             <div className="flex-grow flex flex-col items-center justify-center font-mono">
                 <Time />
                 <DateValue />
-                <div className="mt-16">
+                <div className="mt-4">
                     <Weather />
                 </div>
             </div>

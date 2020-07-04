@@ -64,7 +64,7 @@ export const Weather = () => {
                     temperature={item.temperature}
                     delay={item.key}
                 />
-            ) : <FeatherIcon icon="compass" />}
+            ) : <span className="spin"><FeatherIcon icon="compass" /></span>}
         </div>
     );
 }
