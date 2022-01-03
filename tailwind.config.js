@@ -1,4 +1,7 @@
 module.exports = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -14,11 +17,4 @@ module.exports = {
       }
     }
   },
-  variants: {
-    opacity: ['responsive', 'hover', 'focus', 'group-hover'],
-    translate: ['responsive', 'hover', 'focus', 'group-hover'],
-    scale: ['responsive', 'hover', 'focus', 'group-hover'],
-    text: ['responsive', 'hover', 'focus', 'group-hover'],
-  },
-  plugins: []
 }
