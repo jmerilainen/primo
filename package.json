@@ -15,7 +15,7 @@
     "typeface-source-code-pro": "^1.1.13"
   },
   "engines": {
-    "node": "16.x"
+    "node": "14.x"
   },
   "scripts": {
     "start": "react-scripts start",
