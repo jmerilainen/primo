@@ -37,10 +37,20 @@ function App() {
                 </button>
                 {activeModal ? <>
                     <Modal onClick={closeModel}>
-                        <label htmlFor="theme">Theme</label>
-                        <select id="theme" name="theme" id="theme" onChange={onChangeTheme}>
-                            {themes.map(value => <option value={value} selected={value === theme}>{value}</option>)}
-                        </select>
+                        <div className="grid gap-4">
+                            <div className="grid gap-2">
+                                <label htmlFor="theme">Theme</label>
+                                <div>
+                                    <select id="theme" name="theme" id="theme" onChange={onChangeTheme} value={theme}
+                                        className="p-2 text-white border rounded-none appearance-none bg-primary border-foreground"
+                                    >
+                                        {themes.map((value, index) => (
+                                            <option key={index} value={value}>{value}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </Modal>
                     <Backdrop />
                 </> : ''}
