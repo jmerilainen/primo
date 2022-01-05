@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGeolocation } from 'beautiful-react-hooks';
 import FeatherIcon from 'feather-icons-react';
 
@@ -10,16 +10,18 @@ import { WeatherItem } from './WeatherItem';
 
 
 export const Weather = () => {
-    const [geoState, { onChange }] = useGeolocation({
-        enableHighAccuracy: false,
+    const [geoState, { onChange, onError }] = useGeolocation({
+        timeout: 1000,
     });
 
     const [isPositionSet, setIsPositionSet] = useState(false);
 
-    const [apiError, setError] = useState(null);
+    const [hasError, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
     const [items, setItems] = useState([]);
+
+    onError(() => setError(true))
 
     onChange(() => {
         if (! geoState.isSupported || ! geoState.position || isPositionSet) {
@@ -50,13 +52,32 @@ export const Weather = () => {
           };
 
           fetchData();
+    });
 
-    }, [geoState, isPositionSet])
+    if (hasError) {
+        return (
+            <div className="flex items-center justify-center gap-2 text-center transition duration-500 delay-[5000ms] -translate-y-2 opacity-0 text-muted">
+                <div className="flex justify-center text-xl">
+                    <FeatherIcon icon="alert-circle" />
+                </div>
+                <div className="text-[0.5em]">
+                    Couldn't retrive weather forecast
+                </div>
+            </div>
+        )
+    }
+
+    if (! isLoaded) {
+        return (
+            <div className="flex justify-center text-xl text-muted">
+                <span className="spin"><FeatherIcon icon="compass" /></span>
+            </div>
+        )
+    }
 
     return (
-        <div className="text-muted flex justify-center text-xl">
-            {apiError ? <FeatherIcon icon="alert-circle" /> : ''}
-            {isLoaded ? items.map(item =>
+        <div className="flex justify-center text-xl text-muted">
+            {items.map(item =>
                 <WeatherItem
                     key={item.key}
                     icon={item.icon}
@@ -64,7 +85,7 @@ export const Weather = () => {
                     temperature={item.temperature}
                     delay={item.key}
                 />
-            ) : <span className="spin"><FeatherIcon icon="compass" /></span>}
+            )}
         </div>
     );
 }
