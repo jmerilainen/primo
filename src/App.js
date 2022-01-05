@@ -31,8 +31,8 @@ function App() {
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
-            <div className="flex justify-end p-12 text-xs text-white">
-                <button className="opacity-25">
+            <div className="flex justify-end p-12 text-xs text-foreground">
+                <button className="transition opacity-25 hover:opacity-90">
                     <FeatherIcon icon={! activeModal ? 'menu' : 'x'} onClick={openModal} />
                 </button>
                 {activeModal ? <>
@@ -47,8 +47,10 @@ function App() {
 
             </div>
             <div className="flex flex-col items-center justify-center flex-grow font-mono">
-                <Time />
-                <DateValue />
+                <div className="grid gap-6 text-center">
+                    <Time />
+                    <DateValue />
+                </div>
                 <div className="mt-4">
                     <Weather />
                 </div>

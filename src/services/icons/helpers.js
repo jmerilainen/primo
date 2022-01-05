@@ -2,7 +2,6 @@ const icons = [
     {
         icon: 'cloud',
         alias: ['cloudy', 'partlycloudy_night'],
-
     },
     {
         icon: 'sun',
@@ -23,7 +22,6 @@ const icons = [
 ];
 
 export const transformIcon = icon => {
-    console.log(icon);
     const data = icons.find(item => {
         return item.alias.includes(icon);
     });

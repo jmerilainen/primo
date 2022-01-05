@@ -1,12 +1,12 @@
+import { useLocalStorage } from 'beautiful-react-hooks';
 import { useState, useLayoutEffect } from 'react';
 
 export const useTheme = (defaultTheme = null) => {
-    const [theme, setTheme] = useState(defaultTheme);
+    const [theme, setTheme] = useLocalStorage('theme', defaultTheme);
 
     useLayoutEffect(() => {
         import(`./../../themes/${theme}.json`).then(props => {
             const json = props.default;
-            console.log(json);
             for (const key in json) {
                 // Update css variables in document's root element
                 document.documentElement.style.setProperty(`--${key}`, json[key]);
