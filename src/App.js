@@ -8,6 +8,7 @@ import { DateValue } from './components/DateValue';
 import { useState } from 'react';
 
 import { useTheme } from './services/theme/useTheme';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 function App() {
 
@@ -38,11 +39,10 @@ function App() {
         },
     ];
 
-    const onChangeTheme = event => setTheme(event.target.value);
-
     return (
         <div className="flex flex-col min-h-screen transition-colors duration-700 bg-background">
             <div className="flex justify-end p-12 text-xs text-foreground">
+            <OutsideClickHandler onOutsideClick={() => closeModel() } >
                 <div className="relative space-y-2 text-right">
                     <AnimatePresence exitBeforeEnter initial={false}>
                         <button
@@ -103,7 +103,7 @@ function App() {
                     </>) : ''}
                     </AnimatePresence>
                 </div>
-
+                </OutsideClickHandler>
             </div>
             <div className="flex flex-col items-center justify-center flex-grow font-mono">
                 <div className="grid gap-6 text-center">
