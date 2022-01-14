@@ -1,11 +1,10 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { Time } from './components/Time';
 import { Weather } from './components/Weather';
 import { DateValue } from './components/DateValue';
-import { Modal } from './components/Modal';
-import { Backdrop } from './components/Backdrop';
 import { useState } from 'react';
 
 import { useTheme } from './services/theme/useTheme';
@@ -30,30 +29,68 @@ function App() {
     const onChangeTheme = event => setTheme(event.target.value);
 
     return (
-        <div className="flex flex-col min-h-screen bg-background">
+        <div className="flex flex-col min-h-screen transition-colors duration-700 bg-background">
             <div className="flex justify-end p-12 text-xs text-foreground">
-                <button className="transition opacity-25 hover:opacity-90">
-                    <FeatherIcon icon={! activeModal ? 'menu' : 'x'} onClick={openModal} />
-                </button>
-                {activeModal ? <>
-                    <Modal onClick={closeModel}>
-                        <div className="grid gap-4">
-                            <div className="grid gap-2">
-                                <label htmlFor="theme">Theme</label>
-                                <div>
-                                    <select id="theme" name="theme" id="theme" onChange={onChangeTheme} value={theme}
-                                        className="p-2 text-white border rounded-none appearance-none bg-primary border-foreground"
+                <div className="relative space-y-2 text-right">
+                    <AnimatePresence exitBeforeEnter initial={false}>
+                        <button
+                            className="z-50 p-4 -m-4 transition opacity-25 hover:opacity-90"
+                            onClick={() => activeModal ? closeModel() : openModal() }
+                        >
+                            {activeModal ? (
+                                <motion.span
+                                    className="block"
+                                    key="open"
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{ duration: 0.15 }}
+                                >
+                                    <FeatherIcon icon="x" />
+                                </motion.span>
+                            ): (
+                                <motion.span
+                                    className="block"
+                                    key="closed"
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{ duration: 0.15 }}
+                                >
+                                    <FeatherIcon icon="eye" />
+                                </motion.span>
+                            )}
+                        </button>
+                    </AnimatePresence>
+                    <AnimatePresence>
+                    {activeModal ? (
+                    <>
+                        <div className="absolute right-0 w-40">
+                            <ul className="grid gap-1">
+                                {themes.map((value, index) => (
+                                    <motion.li
+                                        initial={{ opacity: 0, translateX: '1rem' }}
+                                        animate={{ opacity: 1, translateX: 0 }}
+                                        exit={{ opacity: 0, translateX: '1rem' }}
+                                        transition={{ duration: 0.2, delay: 0 + (index * 0.05) }}
+                                        key={index}
                                     >
-                                        {themes.map((value, index) => (
-                                            <option key={index} value={value}>{value}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
+                                        <button className="transition hover:scale-125" onClick={() => setTheme(value)}>
+
+                                            { theme === value ? (
+                                            <>
+                                                <span className="pr-1 text-primary">{value}</span>
+                                                <span className="text-primary">•</span>
+                                            </>
+                                            ) : <span>{value}</span>}
+                                        </button>
+                                    </motion.li>
+                                ))}
+                            </ul>
                         </div>
-                    </Modal>
-                    <Backdrop />
-                </> : ''}
+                    </>) : ''}
+                    </AnimatePresence>
+                </div>
 
             </div>
             <div className="flex flex-col items-center justify-center flex-grow font-mono">
@@ -65,7 +102,7 @@ function App() {
                     <Weather />
                 </div>
             </div>
-            <div className="p-12 text-xs text-white opacity-25">
+            <div className="p-12 text-xs opacity-25 text-foreground">
                 Primo
             </div>
         </div>
