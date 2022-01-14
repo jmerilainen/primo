@@ -20,10 +20,22 @@ function App() {
     const [theme, setTheme] = useTheme('night-owl');
 
     const themes = [
-        'night-owl',
-        'snazzy',
-        'github',
-        'nord',
+        {
+            id: 'night-owl',
+            label: 'Night Owl',
+        },
+        {
+            id: 'snazzy',
+            label: 'Snazzy',
+        },
+        {
+            id: 'github',
+            label: 'GitHub (Light)',
+        },
+        {
+            id: 'nord',
+            label: 'Nord',
+        },
     ];
 
     const onChangeTheme = event => setTheme(event.target.value);
@@ -66,23 +78,23 @@ function App() {
                     {activeModal ? (
                     <>
                         <div className="absolute right-0 w-40">
-                            <ul className="grid gap-1">
+                            <ul className="grid gap-1 font-mono">
                                 {themes.map((value, index) => (
                                     <motion.li
                                         initial={{ opacity: 0, translateX: '1rem' }}
                                         animate={{ opacity: 1, translateX: 0 }}
                                         exit={{ opacity: 0, translateX: '1rem' }}
                                         transition={{ duration: 0.2, delay: 0 + (index * 0.05) }}
-                                        key={index}
+                                        key={value.id}
                                     >
-                                        <button className="transition hover:scale-125" onClick={() => setTheme(value)}>
+                                        <button className="transition hover:scale-125" onClick={() => setTheme(value.id)}>
 
-                                            { theme === value ? (
+                                            { theme === value.id ? (
                                             <>
-                                                <span className="pr-1 text-primary">{value}</span>
+                                                <span className="pr-1 text-primary">{value.label}</span>
                                                 <span className="text-primary">•</span>
                                             </>
-                                            ) : <span>{value}</span>}
+                                            ) : <span>{value.label}</span>}
                                         </button>
                                     </motion.li>
                                 ))}
