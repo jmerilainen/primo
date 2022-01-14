@@ -6,36 +6,44 @@ import { fetchForecast } from '../services/metno/api';
 import { formatForecast } from '../services/metno/helpers';
 
 import { WeatherItem } from './WeatherItem';
-
-
+import { haversine } from '../utils/haversine';
 
 export const Weather = () => {
-    const [geoState, { onChange, onError }] = useGeolocation({
-        timeout: 1000,
-    });
+    const [geoState, { onChange, onError }] = useGeolocation();
 
-    const [isPositionSet, setIsPositionSet] = useState(false);
-
+    const [coords, setCoords] = useState(null);
     const [hasError, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-
     const [items, setItems] = useState([]);
 
     onError(() => setError(true))
 
-    onChange(() => {
-        if (! geoState.isSupported || ! geoState.position || isPositionSet) {
-            return;
+    onChange((position) => {
+        if (coords) {
+            let distanceDiffInKm = haversine(coords, position.coords);
+
+            if (distanceDiffInKm < 5) {
+                return;
+            }
         }
+
+        setCoords({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+        });
+    });
+
+    useEffect(() => {
+        if (! coords) return;
 
         const fetchData = async () => {
             try {
                 const result = await fetchForecast({
-                    lat: geoState.position.coords.latitude,
-                    lon: geoState.position.coords.longitude,
+                    lat: coords.latitude,
+                    lon: coords.longitude,
                 });
 
-                const items = formatForecast(await result, {
+                const items = formatForecast(result, {
                     interval: 3,
                     maxItems: 5,
                 }).map((item, index) => {
@@ -48,11 +56,10 @@ export const Weather = () => {
             }
 
             setIsLoaded(true);
-            setIsPositionSet(true);
-          };
+        };
 
-          fetchData();
-    });
+        fetchData();
+    }, [coords]);
 
     if (hasError) {
         return (
