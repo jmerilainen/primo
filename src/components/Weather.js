@@ -7,21 +7,31 @@ import { formatForecast } from '../services/metno/helpers';
 
 import { WeatherItem } from './WeatherItem';
 import { haversine } from '../utils/haversine';
+import useSWR from 'swr';
+
+const fetcher = url => fetch(url).then(r => r.json())
+
+const weatherWetcher = url => fetcher(url)
+    .then(result => formatForecast(result, {
+        interval: 3,
+        maxItems: 5,
+    }))
+    .then(result => result.map((item, index) => {
+        return { key: index, ...item };
+    }))
 
 export const Weather = () => {
     const [geoState, { onChange, onError }] = useGeolocation();
-
     const [coords, setCoords] = useState(null);
+    const { data, loading, error } = useSWR(coords ? `https://api.met.no/weatherapi/locationforecast/2.0?lat=${coords.latitude}&lon=${coords.longitude}` : null, weatherWetcher);
+
     const [hasError, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
 
     onError(() => setError(true))
 
     onChange((position) => {
         if (coords) {
             let distanceDiffInKm = haversine(coords, position.coords);
-
             if (distanceDiffInKm < 5) {
                 return;
             }
@@ -33,35 +43,7 @@ export const Weather = () => {
         });
     });
 
-    useEffect(() => {
-        if (! coords) return;
-
-        const fetchData = async () => {
-            try {
-                const result = await fetchForecast({
-                    lat: coords.latitude,
-                    lon: coords.longitude,
-                });
-
-                const items = formatForecast(result, {
-                    interval: 3,
-                    maxItems: 5,
-                }).map((item, index) => {
-                    return { key: index, ...item };
-                })
-
-                setItems(items);
-            } catch (error) {
-                setError(true);
-            }
-
-            setIsLoaded(true);
-        };
-
-        fetchData();
-    }, [coords]);
-
-    if (hasError) {
+    if (hasError || error) {
         return (
             <div className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0">
                 <div className="flex items-center justify-center gap-2 text-center text-muted">
@@ -76,7 +58,7 @@ export const Weather = () => {
         )
     }
 
-    if (! isLoaded) {
+    if (loading || ! data) {
         return (
             <div className="flex justify-center text-xl text-muted">
                 <span className="spin"><FeatherIcon icon="compass" /></span>
@@ -86,7 +68,7 @@ export const Weather = () => {
 
     return (
         <div className="flex justify-center text-xl text-muted">
-            {items.map(item =>
+            {data.map(item =>
                 <WeatherItem
                     key={item.key}
                     icon={item.icon}
