@@ -1,7 +1,15 @@
 const icons = [
     {
+        icon: 'moon',
+        alias: ['clearsky_night', 'fair_night'],
+    },
+    {
+        icon: 'sun',
+        alias: ['clearsky_day', 'fair_day'],
+    },
+    {
         icon: 'cloud',
-        alias: ['cloudy', 'partlycloudy_night'],
+        alias: ['fog', 'cloudy', 'partlycloudy_day', 'partlycloudy_night'],
     },
     {
         icon: 'sun',
@@ -9,15 +17,19 @@ const icons = [
     },
     {
         icon: 'cloud-snow',
-        alias: ['snow', 'lightsnow', 'sleet', 'lightsleet'],
+        alias: ['lightsleet', 'heavysleet', 'heavysnow', 'heavysnowshowers_day', 'heavysnowshowers_night', 'lightsleet', 'lightsleetshowers_day', 'lightsleetshowers_night', 'lightsnow', 'lightsnowshowers_day', 'lightsnowshowers_night', 'sleet', 'sleetshowers_day', 'sleetshowers_night', 'snow', 'snowshowers_day', 'snowshowers_night'],
     },
     {
         icon: 'cloud-rain',
-        alias: ['rain', 'heavyrain'],
+        alias: ['heavyrain', 'heavyrainshowers_day', 'heavyrainshowers_night', 'heavysleetshowers_day', 'heavysleetshowers_night', 'rain'],
     },
     {
         icon: 'cloud-drizzle',
-        alias: ['lightrain'],
+        alias: ['lightrain', 'fog', 'lightrain', 'lightrainshowers_day', 'lightrainshowers_night', 'rainshowers_day', 'rainshowers_night'],
+    },
+    {
+        icon: 'cloud-lightning',
+        alias: ['heavyrainandthunder', 'heavyrainshowersandthunder_day', 'heavyrainshowersandthunder_night', 'heavysleetandthunder', 'heavysleetshowersandthunder_day', 'heavysleetshowersandthunder_night', 'heavysnowandthunder', 'heavysnowshowersandthunder_day', 'heavysnowshowersandthunder_night', 'lightrainandthunder', 'lightrainshowersandthunder_day', 'lightrainshowersandthunder_night', 'lightsleetandthunder', 'lightsnowandthunder', 'lightssleetshowersandthunder_day', 'lightssleetshowersandthunder_night', 'lightssnowshowersandthunder_day', 'lightssnowshowersandthunder_night', 'rainandthunder', 'rainshowersandthunder_day', 'rainshowersandthunder_night', 'sleetandthunder', 'sleetshowersandthunder_day', 'sleetshowersandthunder_night', 'snowandthunder', 'snowshowersandthunder_day', 'snowshowersandthunder_night'],
     },
 ];
 
