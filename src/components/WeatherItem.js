@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { useTimeout } from 'beautiful-react-hooks';
+import { useTimeout } from 'react-use';
 import FeatherIcon from 'feather-icons-react';
 import { transformIcon } from '../services/icons/helpers';
 
 
 export const WeatherItem = (props) => {
-    const [visible, setVisible] = useState(false);
 
     const symbol = true;
     const icon = transformIcon(props.icon);
     const delay = (props.delay * 110) + 500;
-
-    useTimeout(() => {
-        setVisible(true);
-    }, delay);
+    const [visible] = useTimeout(delay);
 
     return (
-        <div className={`p-6 flex flex-col items-center transition ease-in-out duration-700 transform ${! visible ? 'translate-y-8 opacity-0' : ''} hover:-translate-y-2 group`}>
+        <div className={`p-6 flex flex-col items-center transition ease-in-out duration-700 transform ${! visible() ? 'translate-y-8 opacity-0' : ''} hover:-translate-y-2 group`}>
             <div className="py-4 text-xs transition duration-700 ease-in-out transform scale-50 translate-y-6 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100">
                 {props.time}
             </div>

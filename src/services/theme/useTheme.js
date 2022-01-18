@@ -1,4 +1,4 @@
-import { useLocalStorage } from 'beautiful-react-hooks';
+import { useLocalStorage } from 'react-use';
 import { useState, useLayoutEffect } from 'react';
 
 export const useTheme = (defaultTheme = null) => {

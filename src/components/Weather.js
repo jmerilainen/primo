@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useGeolocation } from 'beautiful-react-hooks';
+import { useDebounce, useGeolocation, useLocalStorage } from 'react-use';
 import FeatherIcon from 'feather-icons-react';
 
 import { fetchForecast } from '../services/metno/api';
@@ -20,30 +20,32 @@ const weatherWetcher = url => fetcher(url)
         return { key: index, ...item };
     }))
 
-export const Weather = () => {
-    const [geoState, { onChange, onError }] = useGeolocation();
-    const [coords, setCoords] = useState(null);
-    const { data, loading, error } = useSWR(coords ? `https://api.met.no/weatherapi/locationforecast/2.0?lat=${coords.latitude}&lon=${coords.longitude}` : null, weatherWetcher);
+const useLoaction = () => {
+    const [coords, setCoords] = useLocalStorage('location', null);
 
-    const [hasError, setError] = useState(null);
-
-    onError(() => setError(true))
-
-    onChange((position) => {
-        if (coords) {
-            let distanceDiffInKm = haversine(coords, position.coords);
-            if (distanceDiffInKm < 5) {
-                return;
-            }
-        }
-
-        setCoords({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-        });
+    const location = useGeolocation({
+        timeout: 5000,
+        maximumAge: Number.POSITIVE_INFINITY,
     });
 
-    if (hasError || error) {
+    useDebounce(() => {
+        if (coords) return;
+        if (location.loading) return;
+
+        setCoords({
+            longitude: location.longitude,
+            latitude: location.latitude,
+        })
+    }, 500, [location]);
+
+    return [coords, location.error];
+}
+
+export const Weather = () => {
+    const [location, locationError] = useLoaction();
+    const { data, error } = useSWR(location ? `https://api.met.no/weatherapi/locationforecast/2.0?lat=${location.latitude}&lon=${location.longitude}` : null, weatherWetcher);
+
+    if (locationError || error) {
         return (
             <div className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0">
                 <div className="flex items-center justify-center gap-2 text-center text-muted">
@@ -58,7 +60,7 @@ export const Weather = () => {
         )
     }
 
-    if (loading || ! data) {
+    if (! data) {
         return (
             <div className="flex justify-center text-xl text-muted">
                 <span className="spin"><FeatherIcon icon="compass" /></span>
