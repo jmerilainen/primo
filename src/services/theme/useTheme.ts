@@ -1,8 +1,8 @@
 import { useLocalStorage } from 'react-use';
-import { useState, useLayoutEffect } from 'react';
+import { Dispatch, SetStateAction, useLayoutEffect } from 'react';
 
-export const useTheme = (defaultTheme = null) => {
-    const [theme, setTheme] = useLocalStorage('theme', defaultTheme);
+export const useTheme = <T>(defaultTheme: T): [T | undefined, Dispatch<SetStateAction<T | undefined>>] => {
+    const [theme, setTheme] = useLocalStorage<T>('theme', defaultTheme);
 
     useLayoutEffect(() => {
         import(`./../../themes/${theme}.json`).then(props => {

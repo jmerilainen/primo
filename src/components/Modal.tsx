@@ -1,17 +1,22 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
 
-export const Modal = (props) => {
+interface ModalProps {
+    children: any;
+    onClick: Function;
+}
+
+export const Modal = ({ children, onClick } : ModalProps) => {
     return (
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-50">
+        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center">
             <div className="w-full max-w-3xl p-8">
-                <div className="text-gray-900 bg-gray-200 p-8">
+                <div className="p-8 text-gray-900 bg-gray-200">
                     <div className="flex justify-end">
-                        <button onClick={() => props.onClick()}>
+                        <button onClick={() => onClick()}>
                             <FeatherIcon icon="x" />
                         </button>
                     </div>
-                    {props.children}
+                    {children}
                 </div>
             </div>
         </div>

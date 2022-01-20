@@ -1,4 +1,11 @@
-const icons = [
+import { Icon } from "feather-icons-react";
+
+interface IconProps {
+    icon: Icon;
+    alias: string[];
+}
+
+const icons: IconProps[] = [
     {
         icon: 'moon',
         alias: ['clearsky_night', 'fair_night'],
@@ -33,7 +40,7 @@ const icons = [
     },
 ];
 
-export const transformIcon = icon => {
+export const transformIcon = (icon: string): Icon => {
     const data = icons.find(item => {
         return item.alias.includes(icon);
     });

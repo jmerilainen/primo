@@ -11,35 +11,43 @@ import { useState } from 'react';
 import { useTheme } from './services/theme/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
 
+
+type Theme = 'night-owl' | 'snazzy' |  'github' | 'nord';
+interface ThemeLabels {
+    id: Theme;
+    label: string;
+};
+
+const themes: ThemeLabels[] = [
+    {
+        id: 'night-owl',
+        label: 'Night Owl',
+    },
+    {
+        id: 'snazzy',
+        label: 'Snazzy',
+    },
+    {
+        id: 'github',
+        label: 'GitHub (Light)',
+    },
+    {
+        id: 'nord',
+        label: 'Nord',
+    },
+];
+
+
 function App() {
 
-    const [activeModal, setActiveModal] = useState(false);
-    const [spaceMode, setSpaceMode] = useState(false);
+    const [activeModal, setActiveModal] = useState<boolean>(false);
+    const [spaceMode, setSpaceMode] = useState<boolean>(false);
 
     const openModal = () => setActiveModal(true);
     const closeModel = () => setActiveModal(false);
     const isSpaceModeEnabled = false;
 
-    const [theme, setTheme] = useTheme('night-owl');
-
-    const themes = [
-        {
-            id: 'night-owl',
-            label: 'Night Owl',
-        },
-        {
-            id: 'snazzy',
-            label: 'Snazzy',
-        },
-        {
-            id: 'github',
-            label: 'GitHub (Light)',
-        },
-        {
-            id: 'nord',
-            label: 'Nord',
-        },
-    ];
+    const [theme, setTheme] = useTheme<Theme>('night-owl');
 
     return (
         <div className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background">
@@ -73,7 +81,7 @@ function App() {
                                         exit={{ opacity: 0, scale: 0 }}
                                         transition={{ duration: 0.15 }}
                                     >
-                                        <FeatherIcon icon="eye" />
+                                        <FeatherIcon icon="x" />
                                     </motion.span>
                                 )}
                             </button>

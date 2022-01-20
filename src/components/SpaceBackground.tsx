@@ -1,7 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export const SpaceBackground = ({ active }) => {
+interface SpaceBackgroundProps {
+    active: boolean;
+}
+
+export const SpaceBackground = ({
+    active,
+}: SpaceBackgroundProps) => {
     return (
         <AnimatePresence>
             {active
