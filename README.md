@@ -52,4 +52,4 @@ Originally built in 2020 and refactored in 2022.
 
 ## Development
 
-See [`README.CRA.md`](./README.CRA.m).
+See [`README.CRA.md`](./README.CRA.md).
