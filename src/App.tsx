@@ -81,7 +81,7 @@ function App() {
                                         exit={{ opacity: 0, scale: 0 }}
                                         transition={{ duration: 0.15 }}
                                     >
-                                        <FeatherIcon icon="x" />
+                                        <FeatherIcon icon="eye" />
                                     </motion.span>
                                 )}
                             </button>
