@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTimeout } from 'react-use';
 import FeatherIcon from 'feather-icons-react';
 import { transformIcon } from '../services/icons/helpers';
+import type { Forecast } from '../types';
 
-
-export const WeatherItem = (props) => {
+export const WeatherItem = (props: Omit<Forecast, 'timestamp'> & { delay: number }) => {
 
     const symbol = true;
     const icon = transformIcon(props.icon);

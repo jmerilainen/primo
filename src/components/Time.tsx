@@ -4,7 +4,7 @@ import { useTimeout, useInterval } from 'react-use';
 import { TimeValue } from './TimeValue';
 import { TimeSeprator } from './TimeSeprator';
 
-const format = (time) => time < 10 ? `0${time}` : time;
+const format = (time: number) => time < 10 ? `0${time}` : time;
 
 const getTime = () => {
   const date = new Date();

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDebounce, useGeolocation, useLocalStorage } from 'react-use';
 import FeatherIcon from 'feather-icons-react';
 
-import { fetchForecast } from '../services/metno/api';
 import { formatForecast } from '../services/metno/helpers';
 
 import { WeatherItem } from './WeatherItem';
-import { haversine } from '../utils/haversine';
 import useSWR from 'swr';
 
-const fetcher = url => fetch(url).then(r => r.json())
+import type { Coordinates } from '../types';
 
-const weatherWetcher = url => fetcher(url)
+const fetcher = (url: string) => fetch(url).then(r => r.json())
+
+const weatherWetcher = (url: string) => fetcher(url)
     .then(result => formatForecast(result, {
         interval: 3,
         maxItems: 5,
@@ -20,8 +20,9 @@ const weatherWetcher = url => fetcher(url)
         return { key: index, ...item };
     }))
 
-const useLoaction = () => {
-    const [coords, setCoords] = useLocalStorage('location', null);
+const useLoaction = (): [Coordinates, boolean] => {
+    const defaultCoordinates: Coordinates = { longitude: 0, latitude: 0 };
+    let [coords, setCoords] = useLocalStorage<Coordinates>('location', defaultCoordinates);
 
     const location = useGeolocation({
         timeout: 5000,
@@ -29,21 +30,31 @@ const useLoaction = () => {
     });
 
     useDebounce(() => {
-        if (coords) return;
+        if (! coords) return;
         if (location.loading) return;
 
         setCoords({
-            longitude: location.longitude,
-            latitude: location.latitude,
+            longitude: location.longitude ?? 0,
+            latitude: location.latitude ?? 0,
         })
     }, 500, [location]);
 
-    return [coords, location.error];
+    let error = false;
+
+    if (location.error) {
+        error = true;
+    }
+
+    if (! coords) {
+        coords = defaultCoordinates;
+    }
+
+    return [coords, error];
 }
 
 export const Weather = () => {
     const [location, locationError] = useLoaction();
-    const { data, error } = useSWR(location ? `https://api.met.no/weatherapi/locationforecast/2.0?lat=${location.latitude}&lon=${location.longitude}` : null, weatherWetcher);
+    const { data, error } = useSWR(location.longitude && location.latitude ? `https://api.met.no/weatherapi/locationforecast/2.0?lat=${location.latitude}&lon=${location.longitude}` : null, weatherWetcher);
 
     if (locationError || error) {
         return (
