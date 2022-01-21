@@ -4,21 +4,27 @@
     <i>The start</i>
     <br/>
 </div>
+
 <br/>
 <br/>
+
 Primo is a one-view starting page for the browsers. It shows the weather for the next 12 hours.
 With a few themes available you can match the colors by your preferences.
 
 Primo is heavily inspired by an actual Chrome extension that I used many years ago.
 Unfortunately, I can't remember the exact name nor find it from Chrome Store to give
 full credits.
+
 <br/>
 <br/>
+
 <div align="center">
     <img src="./docs/primo.jpg" alt="Example view of the app" />
 </div>
+
 <br/>
 <br/>
+
 ## Usage
 
 Primo uses the browser's geolocation to get your current position to fetch weather forecasts
