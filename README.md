@@ -41,6 +41,7 @@ different libraries.
  * Refactored to TypeScript
  * Animations with [Framer Motion](https://github.com/framer/motion)
  * Data fetching with [SWR](https://github.com/vercel/swr)
+ * Weather data from [met.no API](https://www.met.no/en)
  * Styles with [Tailwind](https://github.com/tailwindlabs/tailwindcss)
  * Custom hooks with [use-react](https://github.com/streamich/react-use)
  * Hosted in [Vercel](https://vercel.com)
