@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 5
+  version: 6
   cacheKey: 8
 
 "@apideck/better-ajv-errors@npm:^0.3.1":
@@ -566,7 +566,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-private-property-in-object@npm:^7.16.7":
+"@babel/plugin-proposal-private-property-in-object@npm:^7.16.0, @babel/plugin-proposal-private-property-in-object@npm:^7.16.7":
   version: 7.16.7
   resolution: "@babel/plugin-proposal-private-property-in-object@npm:7.16.7"
   dependencies:
@@ -2946,7 +2946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.7.0":
+"acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.0":
   version: 8.7.0
   resolution: "acorn@npm:8.7.0"
   bin:
@@ -6321,6 +6321,13 @@ __metadata:
   dependencies:
     function-bind: ^1.1.1
   checksum: b9ad53d53be4af90ce5d1c38331e712522417d017d5ef1ebd0507e07c2fbad8686fffb8e12ddecd4c39ca9b9b47431afbb975b8abf7f3c3b82c98e9aad052792
+  languageName: node
+  linkType: hard
+
+"haversine-distance@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "haversine-distance@npm:1.2.1"
+  checksum: a91819362af09da0b9081ef5406a771819e4cbae00d9ada02bf1898f2fd5176d79c54f3bae8e3dbedbd8f1101dd6cc07a3989e427e358a898e9cff28e938dfc5
   languageName: node
   linkType: hard
 
@@ -11834,11 +11841,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.5.4#~builtin<compat/typescript>":
   version: 4.5.4
-  resolution: "typescript@patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"
+  resolution: "typescript@patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 2e488dde7d2c4a2fa2e79cf2470600f8ce81bc0563c276b72df8ff412d74456ae532ba824650ae936ce207440c79720ddcfaa25e3cb4477572b8534fa4e34d49
+  checksum: eda87927f9cfb94aca9b5e47842daf37347ad3073133e17f556fbb6c18f3493c5b551eedab0f4b26774235ddb7acbe0087250d5285f72ce6819a0891dd5a74ed
   languageName: node
   linkType: hard
 
@@ -12083,6 +12090,7 @@ __metadata:
     date-fns: ^2.28.0
     feather-icons-react: ^0.5.0
     framer-motion: ^5.6.0
+    haversine-distance: ^1.2.1
     postcss: ^8.4.5
     react: ^17.0.2
     react-dom: ^17.0.2
