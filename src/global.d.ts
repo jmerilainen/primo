@@ -1,5 +1,5 @@
 declare module 'feather-icons-react' {
-    import type { FC } from "react";
+    import type { FC } from 'react';
 
     import icons from 'feather-icons-react/build/icons.json';
 

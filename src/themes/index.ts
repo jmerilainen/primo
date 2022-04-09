@@ -7,11 +7,11 @@ interface Theme {
     [key: string]: string;
 }
 
-const themes: {[key: string]: Theme}  =  {
+const themes: { [key: string]: Theme } = {
     github,
     nightowl,
     nord,
     snazzy,
-}
+};
 
 export default themes;

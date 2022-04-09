@@ -6,7 +6,7 @@ interface ModalProps {
     onClick: () => void;
 }
 
-export const Modal = ({ children, onClick } : ModalProps) => {
+export const Modal = ({ children, onClick }: ModalProps) => {
     return (
         <div className="absolute inset-0 z-50 flex flex-col items-center justify-center">
             <div className="w-full max-w-3xl p-8">
