@@ -16,7 +16,7 @@ type Theme = 'nightowl' | 'snazzy' |  'github' | 'nord';
 interface ThemeLabels {
     id: Theme;
     label: string;
-};
+}
 
 const themes: ThemeLabels[] = [
     {

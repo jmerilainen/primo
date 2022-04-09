@@ -70,7 +70,7 @@ export const Weather = () => {
                         <FeatherIcon icon="alert-circle" />
                     </div>
                     <div className="text-[0.5em]">
-                        Couldn't retrive weather forecast
+                        Couldn&apos;t retrive weather forecast
                     </div>
                 </div>
             </div>

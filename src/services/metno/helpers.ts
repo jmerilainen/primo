@@ -14,9 +14,9 @@ export const formatForecast = (data: any, { interval, maxItems }: FromatOptions 
     return data?.properties?.timeseries.filter(({time}: any) => {
         const parsed = parseISO(time);
         return parsed < until;
-    }).filter((item: any, index: number) => {
+    }).filter((item: unknown, index: number) => {
         return index % interval === 0;
-    }).filter((item: any, index: number) => {
+    }).filter((item: unknown, index: number) => {
         return index < maxItems;
     }).map((item: any) => ({
         timestamp: item.time,

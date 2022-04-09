@@ -1,5 +1,3 @@
-/// <reference types="react" />
-
 declare module 'feather-icons-react' {
     import type { FC } from "react";
 

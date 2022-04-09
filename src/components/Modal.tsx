@@ -2,8 +2,8 @@ import React from 'react';
 import FeatherIcon from 'feather-icons-react';
 
 interface ModalProps {
-    children: any;
-    onClick: Function;
+    children: React.ReactNode;
+    onClick: () => void;
 }
 
 export const Modal = ({ children, onClick } : ModalProps) => {
