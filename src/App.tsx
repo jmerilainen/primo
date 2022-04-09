@@ -47,7 +47,7 @@ function App() {
     const [theme, setTheme] = useTheme<Theme>('nightowl');
 
     return (
-        <div className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background">
+        <div data-theme={theme} className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background">
             {isSpaceModeEnabled ? <SpaceBackground active={spaceMode} /> : ''}
             <div className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
                 <OutsideClickHandler onOutsideClick={() => closeModel()}>
@@ -58,6 +58,7 @@ function App() {
                                 onClick={() =>
                                     activeModal ? closeModel() : openModal()
                                 }
+                                data-qa="theme-switcher"
                             >
                                 {activeModal ? (
                                     <motion.span
@@ -111,6 +112,7 @@ function App() {
                                                 >
                                                     <button
                                                         className="transition hover:scale-125"
+                                                        data-qa={`theme-${value.id}`}
                                                         onClick={() =>
                                                             setTheme(value.id)
                                                         }
