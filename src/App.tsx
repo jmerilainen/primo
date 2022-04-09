@@ -12,7 +12,7 @@ import { useTheme } from './services/theme/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
 
 
-type Theme = 'night-owl' | 'snazzy' |  'github' | 'nord';
+type Theme = 'nightowl' | 'snazzy' |  'github' | 'nord';
 interface ThemeLabels {
     id: Theme;
     label: string;
@@ -20,7 +20,7 @@ interface ThemeLabels {
 
 const themes: ThemeLabels[] = [
     {
-        id: 'night-owl',
+        id: 'nightowl',
         label: 'Night Owl',
     },
     {
@@ -47,7 +47,7 @@ function App() {
     const closeModel = () => setActiveModal(false);
     const isSpaceModeEnabled = false;
 
-    const [theme, setTheme] = useTheme<Theme>('night-owl');
+    const [theme, setTheme] = useTheme<Theme>('nightowl');
 
     return (
         <div className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background">

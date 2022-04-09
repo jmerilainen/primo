@@ -1,20 +1,18 @@
 import { useLocalStorage } from 'react-use';
 import { Dispatch, SetStateAction, useLayoutEffect } from 'react';
+import themes from './../../themes';
 
-export const useTheme = <T>(defaultTheme: T): [T | undefined, Dispatch<SetStateAction<T | undefined>>] => {
-    const [theme, setTheme] = useLocalStorage<T>('theme', defaultTheme);
+export const useTheme = <T extends string>(defaultTheme: T): [T, Dispatch<SetStateAction<T | undefined>>] => {
+    const [theme, setTheme] = useLocalStorage<T>('themem', defaultTheme);
 
     useLayoutEffect(() => {
-        import(`./../../themes/${theme}.json`).then(props => {
-            const json = props.default;
-            for (const key in json) {
-                // Update css variables in document's root element
-                document.documentElement.style.setProperty(`--${key}`, json[key]);
-            }
-        });
-        // Iterate through each value in theme object
+        if (! theme) return;
+        const json = themes[theme];
 
-    }, [theme]); // Only call again if theme object reference changes
+        for (const key in json) {
+            document.documentElement.style.setProperty(`--${key}`, json[key]);
+        }
+    }, [theme]);
 
-    return [theme, setTheme];
+    return [theme ?? defaultTheme, setTheme];
 }
