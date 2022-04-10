@@ -101,14 +101,14 @@ const icons: IconProps[] = [
     },
 ];
 
-export const transformIcon = (icon: string): Icon => {
+export default function useIcon(icon: string): Icon {
     const data = icons.find((item) => {
         return item.alias.includes(icon);
     });
 
-    if (!data) {
+    if (! data) {
         return 'minus';
     }
 
     return data.icon;
-};
+}

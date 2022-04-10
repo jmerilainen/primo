@@ -1,13 +1,13 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
-import { transformIcon } from '../services/icons/helpers';
 import type { Forecast } from '../types';
+import useIcon from '../hooks/useIcon';
 
 export const WeatherItem = (
     props: Omit<Forecast, 'timestamp'>
 ) => {
     const symbol = '°C';
-    const icon = transformIcon(props.icon);
+    const icon = useIcon(props.icon);
 
     return (
         <div className="flex flex-col items-center transition duration-700 ease-in-out transform hover:-translate-y-2 group">

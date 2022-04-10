@@ -4,7 +4,7 @@ import themes from '../themes';
 
 export const useTheme = <T extends string>(
     defaultTheme: T
-) => {
+): [string, (value: string) => void] => {
     const [theme, setTheme] = useLocalStorage('theme', defaultTheme);
 
     useLayoutEffect(() => {
