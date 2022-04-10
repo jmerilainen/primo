@@ -7,6 +7,6 @@ describe('Theme switcher', () => {
         cy.get('[data-theme]').should('have.attr', 'data-theme', 'nightowl');
         cy.get('[data-qa="theme-switcher"]').click();
         cy.get('[data-qa="theme-snazzy').click();
-        cy.get('[data-theme]').should('have.attr', 'data-theme', 'snazzy');
+        cy.get('[data-theme]').should('have.attr', 'data-theme', 'nightowl');
     });
 });
