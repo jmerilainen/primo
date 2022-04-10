@@ -32,25 +32,24 @@ for the location. If you don't allow location Primo will only show the current t
 
 From the top right, you can switch themes. Selection will be saved to local storage.
 
-## About
-
-This project is built for fun and learning purposes. The main idea was to try React and
-different libraries.
-
--   Built with React by using [Create React App](https://github.com/facebook/create-react-app)
--   Refactored to TypeScript
--   Animations with [Framer Motion](https://github.com/framer/motion)
--   Data fetching with [SWR](https://github.com/vercel/swr)
--   Weather data from [met.no API](https://www.met.no/en)
--   Styles with [Tailwind](https://github.com/tailwindlabs/tailwindcss)
--   Custom hooks with [use-react](https://github.com/streamich/react-use)
--   Hosted in [Vercel](https://vercel.com)
-
-Some of the libraries wouldn't be necessary to use with this small project but
-was used to trying things out.
-
-Originally built in 2020 and refactored in 2022.
-
 ## Development
 
-See [`README.CRA.md`](./README.CRA.md).
+`yarn install` to install dependecies
+
+`yarn start` to run dev server
+
+## Testing
+
+Lint and  format
+
+`yarn lint` runs eslint
+
+`yarn format` runs prettier
+
+`yarn test` runs unit tests
+
+`yarn test:e2e` runs cypress tests
+
+## Deployment
+
+The `main`  branch will be automatically deployed to production hosted in Vercel.
