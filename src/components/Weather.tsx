@@ -77,7 +77,7 @@ export const Weather = () => {
 
     if (error) {
         return (
-            <div className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0">
+            <div className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0" data-qa="weather-error">
                 <div className="flex items-center justify-center gap-2 text-center text-muted">
                     <div className="flex justify-center text-xl">
                         <FeatherIcon icon="alert-circle" />
@@ -101,7 +101,7 @@ export const Weather = () => {
     }
 
     return (
-        <div className="flex justify-center text-xl text-muted">
+        <div className="flex justify-center text-xl text-muted" data-qa="weather">
             {data.map((item) => (
                 <WeatherItem
                     key={item.key}
