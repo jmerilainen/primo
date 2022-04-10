@@ -5,7 +5,7 @@ export interface Coordinates {
 
 export interface Forecast {
     timestamp: string;
-    time: Date;
+    time: string;
     icon: string;
     temperature: number;
 }
