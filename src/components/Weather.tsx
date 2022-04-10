@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FeatherIcon from 'feather-icons-react';
 
 import { formatForecast } from '../services/metno/helpers';
@@ -17,11 +17,6 @@ const weatherWetcher = (url: string) =>
                 maxItems: 5,
             })
         )
-        .then((result) =>
-            result.map((item, index) => {
-                return { key: index, ...item };
-            })
-        );
 
 const useWeather = () => {
     const { longitude, latitude, error: locationError } = useGeoloaction();
@@ -41,6 +36,12 @@ const useWeather = () => {
 
 export const Weather = () => {
     const { data, error } = useWeather();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        if (! data) return;
+        setMounted(true);
+    }, [data])
 
     if (error) {
         return (
@@ -57,7 +58,7 @@ export const Weather = () => {
         );
     }
 
-    if (!data) {
+    if (! data) {
         return (
             <div className="flex items-center justify-center h-full text-xl text-muted">
                 <span className="spin">
@@ -69,14 +70,18 @@ export const Weather = () => {
 
     return (
         <div className="flex justify-center text-xl text-muted" data-qa="weather">
-            {data.map((item) => (
-                <WeatherItem
-                    key={item.key}
-                    icon={item.icon}
-                    time={item.time}
-                    temperature={item.temperature}
-                    delay={item.key}
-                />
+            {data.map((item, index) => (
+                <div
+                    key={index}
+                    style={{'--delay': (index * 110) + 500 + 'ms'} as React.CSSProperties}
+                    className={`p-6 flex flex-col items-center transition ease-in-out duration-700 delay-[var(--delay)] ${! mounted ? 'opacity-0 translate-y-8' : ''}`}
+                >
+                    <WeatherItem
+                        icon={item.icon}
+                        time={item.time}
+                        temperature={item.temperature}
+                    />
+                </div>
             ))}
         </div>
     );

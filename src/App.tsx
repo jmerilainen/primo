@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 import { useTheme } from './services/theme/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
+import useMounted from './hooks/useMounted';
 
 type Theme = 'nightowl' | 'snazzy' | 'github' | 'nord';
 interface ThemeLabels {
@@ -37,6 +38,7 @@ const themes: ThemeLabels[] = [
 ];
 
 function App() {
+    const mounted = useMounted();
     const [activeModal, setActiveModal] = useState<boolean>(false);
     const [spaceMode, setSpaceMode] = useState<boolean>(false);
 
@@ -187,10 +189,14 @@ function App() {
             </div>
             <div className="flex flex-col items-center justify-center flex-grow font-mono">
                 <div className="grid gap-6 text-center">
-                    <Time />
-                    <DateValue />
+                    <div className={`transition ease-in-out duration-1000 delay-100 transform ${! mounted ? 'translate-y-12 opacity-0' : ''}`}>
+                        <Time />
+                    </div>
+                    <div className={`transition ease-in-out duration-1000 delay-100 transform ${! mounted ? '-translate-y-4 opacity-0' : ''}`}>
+                        <DateValue />
+                    </div>
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 h-[168px]">
                     <Weather />
                 </div>
             </div>
