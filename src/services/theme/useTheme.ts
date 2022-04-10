@@ -1,14 +1,13 @@
-import { useLocalStorage } from 'react-use';
-import { Dispatch, SetStateAction, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import themes from './../../themes';
 
 export const useTheme = <T extends string>(
     defaultTheme: T
-): [T, Dispatch<SetStateAction<T | undefined>>] => {
-    const [theme, setTheme] = useLocalStorage<T>('theme', defaultTheme);
+) => {
+    const [theme, setTheme] = useLocalStorage('theme', defaultTheme);
 
     useLayoutEffect(() => {
-        if (!theme) return;
         const json = themes[theme];
 
         for (const key in json) {
@@ -16,5 +15,5 @@ export const useTheme = <T extends string>(
         }
     }, [theme]);
 
-    return [theme ?? defaultTheme, setTheme];
+    return [theme, setTheme];
 };
