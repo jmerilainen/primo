@@ -1,6 +1,6 @@
 describe('Theme switcher', () => {
     before(() => {
-        cy.visit('/')
+        cy.visit('/');
     });
 
     it('should change theme', () => {

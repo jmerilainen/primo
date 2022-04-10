@@ -49,7 +49,10 @@ function App() {
     const [theme, setTheme] = useTheme<Theme>('nightowl');
 
     return (
-        <div data-theme={theme} className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background">
+        <div
+            data-theme={theme}
+            className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background"
+        >
             {isSpaceModeEnabled ? <SpaceBackground active={spaceMode} /> : ''}
             <div className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
                 <OutsideClickHandler onOutsideClick={() => closeModel()}>
@@ -189,10 +192,18 @@ function App() {
             </div>
             <div className="flex flex-col items-center justify-center flex-grow font-mono">
                 <div className="grid gap-6 text-center">
-                    <div className={`transition ease-in-out duration-1000 delay-100 transform ${! mounted ? 'translate-y-12 opacity-0' : ''}`}>
+                    <div
+                        className={`transition ease-in-out duration-1000 delay-100 transform ${
+                            !mounted ? 'translate-y-12 opacity-0' : ''
+                        }`}
+                    >
                         <Time />
                     </div>
-                    <div className={`transition ease-in-out duration-1000 delay-100 transform ${! mounted ? '-translate-y-4 opacity-0' : ''}`}>
+                    <div
+                        className={`transition ease-in-out duration-1000 delay-100 transform ${
+                            !mounted ? '-translate-y-4 opacity-0' : ''
+                        }`}
+                    >
                         <DateValue />
                     </div>
                 </div>

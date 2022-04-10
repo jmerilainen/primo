@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface GeolocationState {
     loading: boolean;
@@ -22,7 +22,7 @@ export default function useGeoloaction(options?: PositionOptions) {
             latitude: event.coords.latitude,
             longitude: event.coords.longitude,
         });
-    }
+    };
 
     const onError = () => {
         setState({
@@ -31,10 +31,10 @@ export default function useGeoloaction(options?: PositionOptions) {
             latitude: null,
             longitude: null,
         });
-    }
+    };
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(onSucess, onError, options)
+        navigator.geolocation.getCurrentPosition(onSucess, onError, options);
     }, []);
 
     return state;

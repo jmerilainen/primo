@@ -1,7 +1,7 @@
-import useIcon from "./useIcon";
+import useIcon from './useIcon';
 
 test('it finds icon alias', () => {
-    expect(useIcon('rainshowersandthunder_day')).toBe('cloud-lightning')
+    expect(useIcon('rainshowersandthunder_day')).toBe('cloud-lightning');
 });
 
 test('it fallbacks if icon alias is not found', () => {

@@ -3,9 +3,7 @@ import FeatherIcon from 'feather-icons-react';
 import type { Forecast } from '../types';
 import useIcon from '../hooks/useIcon';
 
-export const WeatherItem = (
-    props: Omit<Forecast, 'timestamp'>
-) => {
+export const WeatherItem = (props: Omit<Forecast, 'timestamp'>) => {
     const symbol = '°C';
     const icon = useIcon(props.icon);
 
@@ -20,7 +18,8 @@ export const WeatherItem = (
                 className="transition duration-700 ease-in-out text-foreground opacity-40 group-hover:opacity-100"
             />
             <div className="py-4 text-xs transition duration-700 ease-in-out transform scale-75 -translate-y-3 opacity-50 text-primary group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100">
-                {props.temperature}{symbol}
+                {props.temperature}
+                {symbol}
             </div>
         </div>
     );

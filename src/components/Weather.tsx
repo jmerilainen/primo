@@ -10,13 +10,12 @@ import useFetch from '../hooks/useFetch';
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const weatherWetcher = (url: string) =>
-    fetcher(url)
-        .then((result) =>
-            formatForecast(result, {
-                interval: 3,
-                maxItems: 5,
-            })
-        )
+    fetcher(url).then((result) =>
+        formatForecast(result, {
+            interval: 3,
+            maxItems: 5,
+        })
+    );
 
 const useWeather = () => {
     const { longitude, latitude, error: locationError } = useGeoloaction();
@@ -39,13 +38,16 @@ export const Weather = () => {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        if (! data) return;
+        if (!data) return;
         setMounted(true);
-    }, [data])
+    }, [data]);
 
     if (error) {
         return (
-            <div className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0" data-qa="weather-error">
+            <div
+                className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0"
+                data-qa="weather-error"
+            >
                 <div className="flex items-center justify-center gap-2 text-center text-muted">
                     <div className="flex justify-center text-xl">
                         <FeatherIcon icon="alert-circle" />
@@ -58,7 +60,7 @@ export const Weather = () => {
         );
     }
 
-    if (! data) {
+    if (!data) {
         return (
             <div className="flex items-center justify-center h-full text-xl text-muted">
                 <span className="spin">
@@ -69,12 +71,21 @@ export const Weather = () => {
     }
 
     return (
-        <div className="flex justify-center text-xl text-muted" data-qa="weather">
+        <div
+            className="flex justify-center text-xl text-muted"
+            data-qa="weather"
+        >
             {data.map((item, index) => (
                 <div
                     key={index}
-                    style={{'--delay': (index * 110) + 500 + 'ms'} as React.CSSProperties}
-                    className={`p-6 flex flex-col items-center transition ease-in-out duration-700 delay-[var(--delay)] ${! mounted ? 'opacity-0 translate-y-8' : ''}`}
+                    style={
+                        {
+                            '--delay': index * 110 + 500 + 'ms',
+                        } as React.CSSProperties
+                    }
+                    className={`p-6 flex flex-col items-center transition ease-in-out duration-700 delay-[var(--delay)] ${
+                        !mounted ? 'opacity-0 translate-y-8' : ''
+                    }`}
                 >
                     <WeatherItem
                         icon={item.icon}

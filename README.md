@@ -40,7 +40,7 @@ From the top right, you can switch themes. Selection will be saved to local stor
 
 ## Testing
 
-Lint and  format
+Lint and format
 
 `yarn lint` runs eslint
 
@@ -52,4 +52,4 @@ Lint and  format
 
 ## Deployment
 
-The `main`  branch will be automatically deployed to production hosted in Vercel.
+The `main` branch will be automatically deployed to production hosted in Vercel.

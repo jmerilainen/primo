@@ -106,7 +106,7 @@ export default function useIcon(icon: string): Icon {
         return item.alias.includes(icon);
     });
 
-    if (! data) {
+    if (!data) {
         return 'minus';
     }
 

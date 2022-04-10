@@ -3,18 +3,18 @@ import { Forecast } from '../types';
 const now = () => new Date();
 
 const addHours = (date: Date, hours: number) => {
-    date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+    date.setTime(date.getTime() + hours * 60 * 60 * 1000);
 
     return date;
-}
+};
 
 const formatTime = (time: number) => (time < 10 ? `0${time}` : time);
 
 const getTime = (timestamp: string) => {
     const date = new Date(timestamp);
 
-    return [date.getHours(),date.getMinutes()].map(formatTime).join(':');
-}
+    return [date.getHours(), date.getMinutes()].map(formatTime).join(':');
+};
 
 interface FromatOptions {
     interval: number;

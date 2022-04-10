@@ -4,7 +4,9 @@ const formatTime = (time: number) => (time < 10 ? `0${time}` : time);
 
 const getTime = () => {
     const date = new Date();
-    return [date.getHours(), date.getMinutes(), date.getSeconds()].map(formatTime);
+    return [date.getHours(), date.getMinutes(), date.getSeconds()].map(
+        formatTime
+    );
 };
 
 export default function useTime() {
