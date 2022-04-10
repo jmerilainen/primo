@@ -21,14 +21,44 @@ interface FromatOptions {
     maxItems: number;
 }
 
+interface Timeserie {
+    time: string;
+    data: {
+        next_1_hours: {
+            summary: {
+                symbol_code: string;
+            }
+        },
+        instant: {
+            details: {
+                air_temperature: number;
+            }
+        }
+    }
+}
+interface ApiResponse {
+    properties: {
+        timeseries: Timeserie[]
+    }
+}
+
+function isApiRepsonse(data: unknown): data is ApiResponse {
+    if (typeof data !== 'object' || ! data) return false;
+
+    return 'properties' in data
+        && 'timeseries' in (data as ApiResponse).properties;
+}
+
 export const formatForecast = (
-    data: any,
+    data: unknown,
     { interval, maxItems }: FromatOptions
 ): Forecast[] => {
+    if (! isApiRepsonse(data)) return [];
+
     const until = addHours(now(), maxItems * interval);
 
-    return data?.properties?.timeseries
-        .filter(({ time }: any) => {
+    return data.properties.timeseries
+        .filter(({ time }: Timeserie) => {
             const parsed = new Date(time);
             return parsed < until;
         })
@@ -38,7 +68,7 @@ export const formatForecast = (
         .filter((item: unknown, index: number) => {
             return index < maxItems;
         })
-        .map((item: any) => ({
+        .map((item: Timeserie) => ({
             timestamp: item.time,
             time: getTime(item.time),
             icon: item.data.next_1_hours.summary.symbol_code,
