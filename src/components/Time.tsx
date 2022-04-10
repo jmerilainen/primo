@@ -1,29 +1,16 @@
-import React, { useState } from 'react';
-import { useTimeout, useInterval } from 'react-use';
-
+import React from 'react';
 import { TimeValue } from './TimeValue';
 import { TimeSeprator } from './TimeSeprator';
-
-const format = (time: number) => (time < 10 ? `0${time}` : time);
-
-const getTime = () => {
-    const date = new Date();
-    return [date.getHours(), date.getMinutes(), date.getSeconds()].map(format);
-};
+import useMounted from '../hooks/useMounted';
+import useTime from '../hooks/useTime';
 
 export const Time = () => {
-    const [time, setTime] = useState(getTime());
-    const [visible] = useTimeout(100);
-
-    useInterval(() => {
-        setTime(getTime());
-    }, 1000);
+    const mounted = useMounted();
+    const time = useTime();
 
     return (
         <div
-            className={`text-6xl text-center transition ease-in-out duration-1000 transform ${
-                !visible() ? 'translate-y-12 opacity-0' : ''
-            }`}
+            className={`text-6xl text-center transition ease-in-out duration-1000 delay-100 transform ${! mounted ? 'translate-y-12 opacity-0' : ''}`}
         >
             {time.map((value, index) => (
                 <React.Fragment key={index}>
