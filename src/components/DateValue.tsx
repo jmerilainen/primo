@@ -1,12 +1,10 @@
 import React from 'react';
-import { format } from 'date-fns';
 
 export const DateValue = () => {
-    const value = format(new Date(), 'eeee, MMMM d');
+    const now = new Date();
+    const value = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric'}).format(now);
 
     return (
-        <div>
-            <span className="text-sm text-muted">{value}</span>
-        </div>
+        <span className="text-sm text-muted">{value}</span>
     );
 };
