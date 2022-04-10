@@ -8,7 +8,6 @@ test('renders Modal', () => {
         time="10:00"
         temperature={20}
         icon="clody"
-        delay={0}
     />);
     const mainElement = screen.getByText('20°C');
     expect(mainElement).toBeInTheDocument();

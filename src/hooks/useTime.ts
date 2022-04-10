@@ -18,5 +18,9 @@ export default function useTime() {
         return () => clearTimeout(timer);
     });
 
-    return time;
+    return {
+        hours: time[0],
+        minutes: time[1],
+        seconds: time[2],
+    };
 }
