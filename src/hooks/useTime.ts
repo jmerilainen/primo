@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const formatTime = (time: number) => (time < 10 ? `0${time}` : time);
 

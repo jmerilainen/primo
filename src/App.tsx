@@ -8,7 +8,7 @@ import { DateValue } from './components/DateValue';
 import { SpaceBackground } from './components/SpaceBackground';
 import { useState } from 'react';
 
-import { useTheme } from './services/theme/useTheme';
+import { useTheme } from './hooks/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
 import useMounted from './hooks/useMounted';
 

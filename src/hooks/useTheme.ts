@@ -1,6 +1,6 @@
-import React, { useLayoutEffect } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import themes from './../../themes';
+import { useLayoutEffect } from 'react';
+import useLocalStorage from './useLocalStorage';
+import themes from '../themes';
 
 export const useTheme = <T extends string>(
     defaultTheme: T

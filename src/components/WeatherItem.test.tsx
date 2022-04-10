@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { WeatherItem } from './WeatherItem';
 
 
-test('renders Modal', () => {
+test('renders WeatherItem', () => {
     render(<WeatherItem
         time="10:00"
         temperature={20}

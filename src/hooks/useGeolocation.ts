@@ -15,7 +15,7 @@ export default function useGeoloaction(options?: PositionOptions) {
         error: false,
     });
 
-    const onSucess = (event: any) => {
+    const onSucess = (event: GeolocationPosition) => {
         setState({
             loading: false,
             error: false,
