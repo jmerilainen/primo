@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import FeatherIcon from 'feather-icons-react';
 
-import { formatForecast } from '../services/metno/helpers';
+import { formatForecast } from '../lib/metno';
 
 import { WeatherItem } from './WeatherItem';
-import useSWR from 'swr';
 import useGeoloaction from '../hooks/useGeolocation';
+import useFetch from '../hooks/useFetch';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -21,7 +21,7 @@ const weatherWetcher = (url: string) =>
 const useWeather = () => {
     const { longitude, latitude, error: locationError } = useGeoloaction();
 
-    const { data, error } = useSWR(
+    const { data, error } = useFetch(
         longitude && latitude
             ? `https://api.met.no/weatherapi/locationforecast/2.0?lat=${latitude}&lon=${longitude}`
             : null,

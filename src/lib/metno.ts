@@ -1,4 +1,4 @@
-import { Forecast } from '../../types';
+import { Forecast } from '../types';
 
 const now = () => new Date();
 
