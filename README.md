@@ -32,12 +32,15 @@ for the location. If you don't allow location Primo will only show the current t
 
 From the top right, you can switch themes. Selection will be saved to local storage.
 
+
 ## Quick install with Docker
 
 Run
 
 ```sh
-$ docker-compose -f docker-compose.local.yml up
+$ npm run docker:serve
+
+# equals: docker-compose -f docker-compose.local.yml up
 ```
 
 Open [http://localhost:5000](http://localhost:5000)

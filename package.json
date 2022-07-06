@@ -21,7 +21,8 @@
         "lint": "eslint .",
         "format": "prettier --write .",
         "test": "jest",
-        "test:e2e": "cypress run"
+        "test:e2e": "cypress run",
+        "docker:serve": "docker-compose -f docker-compose.local.yml up"
     },
     "engines": {
         "node": "14.x"
