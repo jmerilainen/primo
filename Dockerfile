@@ -19,7 +19,7 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 
-ADD package.json yarn.lock ./
+ADD ./package.json ./yarn.lock ./
 ADD ./babel.config.json ./postcss.config.js ./tailwind.config.js ./tsconfig.json ./webpack.config.js ./
 ADD ./src ./src
 ADD ./public ./public
