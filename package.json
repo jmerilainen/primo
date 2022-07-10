@@ -16,6 +16,7 @@
         "typescript": "^4.5.4"
     },
     "scripts": {
+        "prepare": "husky install",
         "dev": "webpack serve --mode development",
         "start": "webpack serve --mode production",
         "build": "webpack --mode production",
@@ -48,7 +49,9 @@
         "eslint-plugin-cypress": "^2.12.1",
         "eslint-plugin-react": "latest",
         "html-webpack-plugin": "^5.5.0",
+        "husky": "^8.0.1",
         "jest": "^27.5.1",
+        "lint-staged": "^13.0.3",
         "mini-css-extract-plugin": "^2.6.1",
         "postcss": "^8.4.12",
         "postcss-loader": "^6.2.1",
