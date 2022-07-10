@@ -27,7 +27,8 @@
         "docker:serve": "docker-compose -f docker-compose.local.yml up"
     },
     "engines": {
-        "node": "14.x"
+        "node": "14.x",
+        "yarn": "^3.2.0"
     },
     "devDependencies": {
         "@babel/core": "^7.17.9",
