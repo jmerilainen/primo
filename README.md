@@ -46,22 +46,22 @@ Open [http://localhost:5000](http://localhost:5000)
 
 ## Requirements
 
-* node.js `>= 14`
-* yarn
+-   node.js `>= 14`
+-   yarn
 
 ## Development
 
 1. Install dependecies
 
-```sh
-yarn install
-```
+    ```sh
+    yarn install
+    ```
 
 2. Start development server with watch mode
 
-```sh
-yarn dev
-```
+    ```sh
+    yarn dev
+    ```
 
 3. Start coding
 
