@@ -3850,6 +3850,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compression-webpack-plugin@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "compression-webpack-plugin@npm:10.0.0"
+  dependencies:
+    schema-utils: ^4.0.0
+    serialize-javascript: ^6.0.0
+  peerDependencies:
+    webpack: ^5.1.0
+  checksum: 2ac9079b7ab87141639c62ddbb2820a06f105198e27ef4c3860da3186bdbefc00d1e206969833ce7a4b7b26161ddbec7b8d20d30f9f9c1d494818b9b86f0d5cc
+  languageName: node
+  linkType: hard
+
 "compression@npm:^1.7.4":
   version: 1.7.4
   resolution: "compression@npm:1.7.4"
@@ -7462,6 +7474,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mini-css-extract-plugin@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "mini-css-extract-plugin@npm:2.6.1"
+  dependencies:
+    schema-utils: ^4.0.0
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: df60840404878c4832b4104799fd29c5a89b06b1e377956c8d4a5729efe0ef301a52e5087d6f383871df5e69a8445922a0ae635c11abf412d7645a7096d0e973
+  languageName: node
+  linkType: hard
+
 "minimalistic-assert@npm:^1.0.0":
   version: 1.0.1
   resolution: "minimalistic-assert@npm:1.0.1"
@@ -8354,6 +8377,7 @@ __metadata:
     "@typescript-eslint/parser": latest
     autoprefixer: ^10.4.4
     babel-loader: ^8.2.4
+    compression-webpack-plugin: ^10.0.0
     css-loader: ^6.7.1
     cypress: ^9.5.3
     eslint: ^8.13.0
@@ -8363,6 +8387,7 @@ __metadata:
     framer-motion: ^5.6.0
     html-webpack-plugin: ^5.5.0
     jest: ^27.5.1
+    mini-css-extract-plugin: ^2.6.1
     postcss: ^8.4.12
     postcss-loader: ^6.2.1
     prettier: ^2.6.2
