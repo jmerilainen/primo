@@ -23,6 +23,12 @@ full credits.
 </div>
 
 <br/>
+
+<div align="center">
+    Demo: <a href="https://getprimo.vercel.app">getprimo.now.sh</a>
+</div>
+
+<br/>
 <br/>
 
 ## Usage
@@ -46,7 +52,7 @@ Open [http://localhost:5000](http://localhost:5000)
 
 ## Requirements
 
--   node.js `>= 14`
+-   node.js `14.x`
 -   yarn
 
 ## Development
