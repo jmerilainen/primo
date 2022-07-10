@@ -32,37 +32,94 @@ for the location. If you don't allow location Primo will only show the current t
 
 From the top right, you can switch themes. Selection will be saved to local storage.
 
+## Quickstart with Docker
 
-## Quick install with Docker
-
-Run
+To get project running locally with Docker, run
 
 ```sh
-$ npm run docker:serve
+yarn docker:serve
 
-# equals: docker-compose -f docker-compose.local.yml up
+# alias for "docker-compose -f docker-compose.local.yml up"
 ```
 
 Open [http://localhost:5000](http://localhost:5000)
 
+## Requirements
+
+* node.js `>= 14`
+* yarn
+
 ## Development
 
-`yarn install` to install dependecies
+1. Install dependecies
 
-`yarn start` to run dev server
+```sh
+yarn install
+```
+
+2. Start development server with watch mode
+
+```sh
+yarn dev
+```
+
+3. Start coding
 
 ## Testing
 
-Lint and format
+### Unit
 
-`yarn lint` runs eslint
+For unit tests the project uses Jest. Tests are in `src` directory among other
+source files prefixed with `*.test.(ts|tsx)`.
 
-`yarn format` runs prettier
+To run unit tests run command
 
-`yarn test` runs unit tests
+```sh
+yarn test
+```
 
-`yarn test:e2e` runs cypress tests
+### E2E
+
+Project uses the Cypress for End-to-End (E2E) tests. Tests are in `cypress/integartion` directory.
+
+To run e2e tests, run command
+
+```sh
+yarn test:e2e
+```
+
+### Type checks
+
+Project uses TypeScript.
+
+To run type checking across the whole project, run command
+
+```sh
+yarn typecheck
+```
+
+### Linting
+
+Project uses ESLint for linting. That is configured in `.eslintrc.js`.
+
+To run linting with auto-fix, run command
+
+```sh
+yarn lint
+```
+
+### Formatting
+
+[Prettier](https://prettier.io/) is used for auto-formatting. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save.
+
+To run formating, run command
+
+```sh
+yarn format
+```
 
 ## Deployment
 
-The `main` branch will be automatically deployed to production hosted in Vercel.
+Project is hosted in [Vercel](https://vercel.com).
+
+The `main` branch will be automatically deployed to production.
