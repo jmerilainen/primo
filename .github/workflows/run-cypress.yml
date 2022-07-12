@@ -1,44 +1,20 @@
-name: Cypress
+name: Cypress Tests
 
-on: [deployment_status]
+on: [push]
 
 jobs:
-  e2e:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+  cypress:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
-      - name: Run Cypress
-        uses: cypress-io/github-action@v2
-        env:
-          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
-      - name: Success
-        if: ${{ success() }}
-        run: |
-          curl --request POST \
-          --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
-          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --header 'content-type: application/json' \
-          --data '{
-            "context": "Cypress ✅",
-            "state": "success",
-            "description": "Cypress tests passed",
-            "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          }'
-      - name: Fail
-        if: ${{ failure() }}
-        run: |
-          curl --request POST \
-          --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} \
-          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --header 'content-type: application/json' \
-          --data '{
-            "context": "Cypress 🚨",
-            "state": "failure",
-            "description": "Cypress tests failed"
-          }'
+          node-version: 16
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          build: yarn build
+          start: yarn start
