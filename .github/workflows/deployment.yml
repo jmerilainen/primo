@@ -6,9 +6,6 @@ on:
             - main
     pull_request: {}
 
-permissions:
-    pull-requests: write
-
 jobs:
     lint:
         name: Lint
