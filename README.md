@@ -33,7 +33,7 @@ full credits.
 
 ## About
 
-This is an example React project built from scratch and with minimal production dependencies.
+This is an example React project built from scratch including a robust development enviroment and with minimal production dependencies.
 
 ## Usage
 
