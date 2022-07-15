@@ -31,6 +31,10 @@ full credits.
 <br/>
 <br/>
 
+## About
+
+This is an example React project built from scratch and with minimal production dependencies.
+
 ## Usage
 
 Primo uses the browser's geolocation to get your current position to fetch weather forecasts
