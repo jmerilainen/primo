@@ -27,33 +27,34 @@ interface Timeserie {
         next_1_hours: {
             summary: {
                 symbol_code: string;
-            }
-        },
+            };
+        };
         instant: {
             details: {
                 air_temperature: number;
-            }
-        }
-    }
+            };
+        };
+    };
 }
 interface ApiResponse {
     properties: {
-        timeseries: Timeserie[]
-    }
+        timeseries: Timeserie[];
+    };
 }
 
 function isApiRepsonse(data: unknown): data is ApiResponse {
-    if (typeof data !== 'object' || ! data) return false;
+    if (typeof data !== 'object' || !data) return false;
 
-    return 'properties' in data
-        && 'timeseries' in (data as ApiResponse).properties;
+    return (
+        'properties' in data && 'timeseries' in (data as ApiResponse).properties
+    );
 }
 
 export const formatForecast = (
     data: unknown,
     { interval, maxItems }: FromatOptions
 ): Forecast[] => {
-    if (! isApiRepsonse(data)) return [];
+    if (!isApiRepsonse(data)) return [];
 
     const until = addHours(now(), maxItems * interval);
 

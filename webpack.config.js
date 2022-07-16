@@ -22,7 +22,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                ],
             },
         ],
     },
@@ -38,7 +42,7 @@ module.exports = {
             template: path.resolve(__dirname, './public/index.html'),
         }),
         new CompressionPlugin(),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
     ],
     performance: {
         assetFilter: function (file) {
