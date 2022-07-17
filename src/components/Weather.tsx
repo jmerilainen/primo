@@ -45,7 +45,7 @@ export const Weather = () => {
     if (error) {
         return (
             <div
-                className="transition duration-500 delay-[5000ms] -translate-y-2 opacity-0"
+                className="-translate-y-2 opacity-0 transition delay-[5000ms] duration-500"
                 data-qa="weather-error"
             >
                 <div className="flex items-center justify-center gap-2 text-center text-muted">
@@ -62,7 +62,7 @@ export const Weather = () => {
 
     if (!data) {
         return (
-            <div className="flex items-center justify-center h-full text-xl text-muted">
+            <div className="flex h-full items-center justify-center text-xl text-muted">
                 <span className="spin">
                     <FeatherIcon icon="compass" />
                 </span>
@@ -83,8 +83,8 @@ export const Weather = () => {
                             '--delay': index * 110 + 500 + 'ms',
                         } as React.CSSProperties
                     }
-                    className={`p-6 flex flex-col items-center transition ease-in-out duration-700 delay-[var(--delay)] ${
-                        !mounted ? 'opacity-0 translate-y-8' : ''
+                    className={`flex flex-col items-center p-6 transition delay-[var(--delay)] duration-700 ease-in-out ${
+                        !mounted ? 'translate-y-8 opacity-0' : ''
                     }`}
                 >
                     <WeatherItem
