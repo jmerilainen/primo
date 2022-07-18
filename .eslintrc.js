@@ -29,4 +29,10 @@ module.exports = {
             version: 'detect',
         },
     },
+    overrides: [
+        {
+            files: ['src/**'],
+            extends: ['plugin:jest/recommended'],
+        },
+    ],
 };
