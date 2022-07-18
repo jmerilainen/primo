@@ -35,7 +35,7 @@ export default function useGeoloaction(options?: PositionOptions) {
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(onSucess, onError, options);
-    }, []);
+    }, [options]);
 
     return state;
 }

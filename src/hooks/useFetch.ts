@@ -13,7 +13,7 @@ export default function useFetch<T>(
         fetcher(url)
             .then((data) => setData(data))
             .catch(() => setError(true));
-    }, [url]);
+    }, [fetcher, url]);
 
     return { data, error };
 }
