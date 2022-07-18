@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FeatherIcon from 'feather-icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -6,7 +6,6 @@ import { Time } from './components/Time';
 import { Weather } from './components/Weather';
 import { DateValue } from './components/DateValue';
 import { SpaceBackground } from './components/SpaceBackground';
-import { useState } from 'react';
 
 import { useTheme } from './hooks/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
