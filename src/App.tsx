@@ -51,7 +51,7 @@ function App() {
     return (
         <div
             data-theme={theme}
-            className="relative flex flex-col min-h-screen transition-colors duration-700 bg-background"
+            className="relative flex min-h-screen flex-col bg-background transition-colors duration-700"
         >
             {isSpaceModeEnabled ? <SpaceBackground active={spaceMode} /> : ''}
             <div className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
@@ -59,7 +59,7 @@ function App() {
                     <div className="relative space-y-2 text-right">
                         <AnimatePresence exitBeforeEnter initial={false}>
                             <button
-                                className="z-50 p-4 -m-4 transition opacity-25 hover:opacity-90"
+                                className="z-50 -m-4 p-4 opacity-25 transition hover:opacity-90"
                                 onClick={() =>
                                     activeModal ? closeModel() : openModal()
                                 }
@@ -190,17 +190,17 @@ function App() {
                     </div>
                 </OutsideClickHandler>
             </div>
-            <div className="flex flex-col items-center justify-center flex-grow font-mono">
+            <div className="flex flex-grow flex-col items-center justify-center font-mono ">
                 <div className="grid gap-6 text-center">
                     <div
-                        className={`transition ease-in-out duration-1000 delay-100 transform ${
+                        className={`transform transition delay-100 duration-1000 ease-in-out ${
                             !mounted ? 'translate-y-12 opacity-0' : ''
                         }`}
                     >
                         <Time />
                     </div>
                     <div
-                        className={`transition ease-in-out duration-1000 delay-100 transform ${
+                        className={`transform transition delay-100 duration-1000 ease-in-out ${
                             !mounted ? '-translate-y-4 opacity-0' : ''
                         }`}
                     >
@@ -211,7 +211,7 @@ function App() {
                     <Weather />
                 </div>
             </div>
-            <div className="p-12 text-xs opacity-25 text-foreground">Primo</div>
+            <div className="p-12 text-xs text-foreground opacity-25">Primo</div>
         </div>
     );
 }

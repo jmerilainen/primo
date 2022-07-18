@@ -17,7 +17,7 @@ export const SpaceBackground = ({ active }: SpaceBackgroundProps) => {
                     transition={{ duration: 1 }}
                 >
                     <motion.div
-                        className="absolute inset-0 pointer-events-none bg-blend-soft-light opacity-40"
+                        className="pointer-events-none absolute inset-0 opacity-40 bg-blend-soft-light"
                         key="space"
                         animate={{
                             background: [

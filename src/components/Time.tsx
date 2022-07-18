@@ -7,7 +7,7 @@ export const Time = () => {
     const { hours, minutes, seconds } = useTime();
 
     return (
-        <div className="text-6xl text-center">
+        <div className="text-center text-6xl">
             <TimeValue value={hours} />
             <TimeSeprator />
             <TimeValue value={minutes} />
