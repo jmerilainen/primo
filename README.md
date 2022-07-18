@@ -110,9 +110,25 @@ yarn typecheck
 
 ### Linting
 
-Project uses ESLint for linting. That is configured in `.eslintrc.js`.
+Project uses ESLint for linting TypeScript. That is configured in `.eslintrc.js`.
 
-To run linting with auto-fix, run command
+To run linting, run command
+
+```sh
+yarn lint:js
+```
+
+For the styles, Stylelint is in use. That is configured in `.stylelintrc.json`.
+
+To run linting, run command
+
+```sh
+yarn lint:css
+```
+
+> Altough it is recommended to use Tailwind CSS for styling there might be a cases when custom css is required to write. [Prettier](#Formatting) will handle Tailwind's class sorting.
+
+To run both linting with auto fix, run
 
 ```sh
 yarn lint
