@@ -2,10 +2,6 @@
     "extends": [
         "stylelint-config-standard",
         "stylelint-config-tailwindcss",
-        "stylelint-config-prettier"
-    ],
-    "plugins": ["stylelint-prettier"],
-    "rules": {
-        "prettier/prettier": true
-    }
+        "stylelint-prettier/recommended"
+    ]
 }
