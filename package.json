@@ -10,7 +10,7 @@
         "build": "webpack --mode production",
         "lint:js": "eslint --cache .",
         "lint:css": "stylelint 'src/**/*.css' --cache",
-        "lint": "yarn lint:js x && yarn lint:css",
+        "lint": "yarn lint:js && yarn lint:css",
         "lint:fix": "yarn lint:js --fix && yarn lint:css --fix",
         "format": "prettier --write --cache . && yarn lint:fix",
         "test": "jest",
