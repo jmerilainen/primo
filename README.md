@@ -33,7 +33,8 @@ full credits.
 
 ## About
 
-This is an example React project built from scratch including a robust development enviroment and with minimal production dependencies.
+This is an example React project built from scratch including a robust development
+enviroment and with minimal production dependencies.
 
 ## Usage
 
@@ -143,6 +144,17 @@ To run formating, run command
 ```sh
 yarn format
 ```
+
+### Accessibility (a11y)
+
+ESlint is used for identifying accessibility issues in JSX.
+
+Axe is used for React application accessibility testing. Results will show in the
+DevTools console (works best in Chrome, limited in Safari and Firefox). E2E tests
+will also run Axe tests automatically and will error on violations.
+
+Rest of the accessibility testing is done manually. The `WCAG 2.0 Level AA`
+should be achieved.
 
 ## Deployment
 
