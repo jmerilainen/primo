@@ -128,3 +128,14 @@ jobs:
                   vercel-args: '--prod'
                   alias-domains: |
                       getprimo.now.sh
+
+    lighthouse:
+        name: Lighthouse
+        runs-on: ubuntu-latest
+        needs: [deploy]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Run Lighthouse
+              uses: treosh/lighthouse-ci-action@v9
+                with:
+                  urls: 'https://getprimo.now.sh'
