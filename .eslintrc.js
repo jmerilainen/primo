@@ -24,7 +24,10 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: ['react', '@typescript-eslint', 'prettier'],
-    rules: {},
+    "rules": {
+
+        "prettier/prettier": "warn"
+      },
     settings: {
         react: {
             version: 'detect',
