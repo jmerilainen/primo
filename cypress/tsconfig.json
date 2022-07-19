@@ -3,7 +3,7 @@
         "strict": true,
         "baseUrl": "../node_modules",
         "lib": ["dom", "dom.iterable", "esnext"],
-        "types": ["node", "cypress"]
+        "types": ["node", "cypress", "cypress-axe"]
     },
     "include": ["**/*.ts"]
 }
