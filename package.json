@@ -2,6 +2,7 @@
     "name": "primo",
     "version": "0.1.0",
     "private": true,
+    "license": "MIT",
     "scripts": {
         "prepare": "husky install",
         "dev": "webpack serve --mode development",
