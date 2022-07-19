@@ -53,6 +53,7 @@ function App() {
             className="relative flex min-h-screen flex-col bg-background transition-colors duration-700"
         >
             {isSpaceModeEnabled ? <SpaceBackground active={spaceMode} /> : ''}
+
             <header className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
                 <OutsideClickHandler onOutsideClick={() => closeModel()}>
                     <div className="relative space-y-2 text-right">
