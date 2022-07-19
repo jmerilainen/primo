@@ -53,7 +53,7 @@ function App() {
             className="relative flex min-h-screen flex-col bg-background transition-colors duration-700"
         >
             {isSpaceModeEnabled ? <SpaceBackground active={spaceMode} /> : ''}
-            <div className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
+            <header className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
                 <OutsideClickHandler onOutsideClick={() => closeModel()}>
                     <div className="relative space-y-2 text-right">
                         <AnimatePresence exitBeforeEnter initial={false}>
@@ -74,6 +74,9 @@ function App() {
                                         transition={{ duration: 0.15 }}
                                     >
                                         <FeatherIcon icon="x" />
+                                        <span className="sr-only">
+                                            Show theme options
+                                        </span>
                                     </motion.span>
                                 ) : (
                                     <motion.span
@@ -85,6 +88,9 @@ function App() {
                                         transition={{ duration: 0.15 }}
                                     >
                                         <FeatherIcon icon="eye" />
+                                        <span className="sr-only">
+                                            Close theme options
+                                        </span>
                                     </motion.span>
                                 )}
                             </button>
@@ -188,8 +194,8 @@ function App() {
                         </AnimatePresence>
                     </div>
                 </OutsideClickHandler>
-            </div>
-            <div className="flex flex-grow flex-col items-center justify-center font-mono ">
+            </header>
+            <main className="flex flex-grow flex-col items-center justify-center font-mono ">
                 <div className="grid gap-6 text-center">
                     <div
                         className={`transform transition delay-100 duration-1000 ease-in-out ${
@@ -209,8 +215,10 @@ function App() {
                 <div className="mt-4 h-[168px]">
                     <Weather />
                 </div>
-            </div>
-            <div className="p-12 text-xs text-foreground opacity-25">Primo</div>
+            </main>
+            <footer className="p-12 text-xs text-foreground opacity-25">
+                <h1>Primo</h1>
+            </footer>
         </div>
     );
 }
