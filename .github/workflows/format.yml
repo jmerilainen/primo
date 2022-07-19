@@ -7,6 +7,7 @@ on:
 
 jobs:
     format:
+        name: Format
         runs-on: ubuntu-latest
         steps:
             - name: Cancel previous runs
@@ -29,4 +30,5 @@ jobs:
             - name: Commit changes
               uses: stefanzweifel/git-auto-commit-action@v4
               with:
+                  commit_options: '--no-verify'
                   commit_message: Format
