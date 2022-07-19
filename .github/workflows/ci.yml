@@ -118,6 +118,7 @@ jobs:
               run: yarn build
 
             - name: Deploy to production
+              id: production
               uses: amondnet/vercel-action@v25
               if: ${{ github.ref == 'refs/heads/main' }}
               with:
@@ -141,7 +142,7 @@ jobs:
             - name: Run Lighthouse
               uses: treosh/lighthouse-ci-action@v9
               with:
-                  urls: 'https://getprimo.now.sh'
+                  urls: ${{ steps.production.outputs.preview-url }}
                   temporaryPublicStorage: true
               env:
                   LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
