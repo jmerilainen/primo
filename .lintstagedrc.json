@@ -1,5 +1,5 @@
 {
-    "*.{ts,tsx}": ["tsc-files --noEmit", "eslint --fix", "prettier --write"],
+    "*.{ts,tsx}": ["bash -c tsc", "eslint --fix", "prettier --write"],
     "*.md": ["prettier --write"],
     "*.css": ["stylelint --fix"]
 }
