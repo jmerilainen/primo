@@ -27,7 +27,7 @@
         "typeface-source-code-pro": "^1.1.13"
     },
     "devDependencies": {
-        "@axe-core/react": "^4.4.4",
+        "@axe-core/react": "^4.4.5",
         "@babel/core": "^7.19.3",
         "@babel/preset-env": "^7.19.3",
         "@babel/preset-react": "^7.16.7",
