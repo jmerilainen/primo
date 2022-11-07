@@ -19,7 +19,7 @@
         "docker:serve": "docker-compose -f docker-compose.local.yml up"
     },
     "dependencies": {
-        "feather-icons-react": "^0.5.0",
+        "feather-icons-react": "^0.6.2",
         "framer-motion": "^6.5.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
