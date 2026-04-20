@@ -13,8 +13,7 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "module": "esnext",
-        "types": ["jest"]
+        "module": "esnext"
     },
     "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules", "cypress"]
