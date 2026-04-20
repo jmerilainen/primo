@@ -11,7 +11,7 @@ import { useTheme } from './hooks/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
 import useMounted from './hooks/useMounted';
 
-type Theme = 'nightowl' | 'snazzy' | 'github' | 'nord';
+type Theme = 'nightowl' | 'snazzy' | 'github' | 'nord' | 'solarized';
 interface ThemeLabels {
     id: Theme;
     label: string;
@@ -33,6 +33,10 @@ const themes: ThemeLabels[] = [
     {
         id: 'nord',
         label: 'Nord',
+    },
+    {
+        id: 'solarized',
+        label: 'Solarized Dark',
     },
 ];
 
@@ -174,7 +178,7 @@ function App() {
                                                         className={`transition hover:scale-125`}
                                                         onClick={() =>
                                                             setSpaceMode(
-                                                                !spaceMode
+                                                                !spaceMode,
                                                             )
                                                         }
                                                     >
