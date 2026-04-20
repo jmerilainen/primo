@@ -11,7 +11,12 @@ import { useTheme } from './hooks/useTheme';
 import OutsideClickHandler from 'react-outside-click-handler';
 import useMounted from './hooks/useMounted';
 
-type Theme = 'nightowl' | 'snazzy' | 'github' | 'nord';
+const OutsideClick = OutsideClickHandler as unknown as React.ComponentType<{
+    onOutsideClick: () => void;
+    children: React.ReactNode;
+}>;
+
+type Theme = 'nightowl' | 'snazzy' | 'github' | 'nord' | 'solarized';
 interface ThemeLabels {
     id: Theme;
     label: string;
@@ -34,6 +39,10 @@ const themes: ThemeLabels[] = [
         id: 'nord',
         label: 'Nord',
     },
+    {
+        id: 'solarized',
+        label: 'Solarized Dark',
+    },
 ];
 
 function App() {
@@ -55,7 +64,7 @@ function App() {
             {isSpaceModeEnabled ? <SpaceBackground active={spaceMode} /> : ''}
 
             <header className="flex items-center justify-end gap-4 p-12 text-xs text-foreground">
-                <OutsideClickHandler onOutsideClick={() => closeModel()}>
+                <OutsideClick onOutsideClick={() => closeModel()}>
                     <div className="relative space-y-2 text-right">
                         <AnimatePresence exitBeforeEnter initial={false}>
                             <button
@@ -194,7 +203,7 @@ function App() {
                             )}
                         </AnimatePresence>
                     </div>
-                </OutsideClickHandler>
+                </OutsideClick>
             </header>
             <main className="flex flex-grow flex-col items-center justify-center font-mono ">
                 <div className="grid gap-6 text-center">
