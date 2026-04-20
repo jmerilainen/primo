@@ -1,5 +1,3 @@
-/// <reference types="jest-dom" />
-
 declare module 'feather-icons-react' {
     import type { FC } from 'react';
 
