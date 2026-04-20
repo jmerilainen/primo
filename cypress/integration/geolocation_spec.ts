@@ -1,5 +1,5 @@
 describe('Geolocation', () => {
-    Cypress.browser.isHeaded &&
+    if (Cypress.browser.isHeaded) {
         it('should show error message on geolocation error', () => {
             cy.visit('/', {
                 onBeforeLoad(window) {
@@ -14,4 +14,5 @@ describe('Geolocation', () => {
 
             cy.get('[data-qa="weather-error"]').should('exist');
         });
+    }
 });
