@@ -1,17 +1,19 @@
 # Base image
-FROM node:22.0.0-alpine as base
+FROM node:22.0.0-alpine AS base
+
+RUN corepack enable
 
 # Install all dependencies
-FROM base as deps
+FROM base AS deps
 
 WORKDIR /app
 
-ADD package.json yarn.lock ./
+ADD package.json pnpm-lock.yaml ./
 
-RUN yarn install
+RUN pnpm install --frozen-lockfile
 
 # Build with dev dependencies
-FROM base as build
+FROM base AS build
 
 ENV NODE_ENV=production
 
@@ -19,12 +21,12 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 
-ADD ./package.json ./yarn.lock ./
+ADD ./package.json ./pnpm-lock.yaml ./
 ADD ./babel.config.json ./postcss.config.js ./tailwind.config.js ./tsconfig.json ./webpack.config.js ./
 ADD ./src ./src
 ADD ./public ./public
 
-RUN npm run build
+RUN pnpm run build
 
 # Serve static site
 FROM pierrezemb/gostatic

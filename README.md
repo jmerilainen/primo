@@ -48,7 +48,7 @@ From the top right, you can switch themes. Selection will be saved to local stor
 To get project running locally with Docker, run
 
 ```sh
-yarn docker:serve
+pnpm docker:serve
 
 # alias for "docker-compose -f docker-compose.local.yml up"
 ```
@@ -57,21 +57,21 @@ Open [http://localhost:5000](http://localhost:5000)
 
 ## Requirements
 
--   node.js `14.x`
--   yarn
+-   node.js `22.x`
+-   pnpm
 
 ## Development
 
 1. Install dependecies
 
     ```sh
-    yarn install
+    pnpm install
     ```
 
 2. Start development server with watch mode
 
     ```sh
-    yarn dev
+    pnpm dev
     ```
 
 3. Start coding
@@ -86,7 +86,7 @@ source files prefixed with `*.test.(ts|tsx)`.
 To run unit tests run command
 
 ```sh
-yarn test
+pnpm test
 ```
 
 ### E2E
@@ -96,7 +96,7 @@ Project uses the Cypress for End-to-End (E2E) tests. Tests are in `cypress/integ
 To run e2e tests, run command
 
 ```sh
-yarn test:e2e
+pnpm test:e2e
 ```
 
 ### Type checks
@@ -106,7 +106,7 @@ Project uses TypeScript.
 To run type checking across the whole project, run command
 
 ```sh
-yarn typecheck
+pnpm typecheck
 ```
 
 ### Linting
@@ -116,7 +116,7 @@ Project uses ESLint for linting TypeScript. That is configured in `.eslintrc.js`
 To run linting, run command
 
 ```sh
-yarn lint:js
+pnpm lint:js
 ```
 
 For the styles, Stylelint is in use. That is configured in `.stylelintrc.json`.
@@ -124,7 +124,7 @@ For the styles, Stylelint is in use. That is configured in `.stylelintrc.json`.
 To run linting, run command
 
 ```sh
-yarn lint:css
+pnpm lint:css
 ```
 
 > Altough it is recommended to use Tailwind CSS for styling there might be a cases when custom css is required to write. [Prettier](#Formatting) will handle Tailwind's class sorting.
@@ -132,7 +132,7 @@ yarn lint:css
 To run both linting with auto fix, run
 
 ```sh
-yarn lint
+pnpm lint
 ```
 
 ### Formatting
@@ -142,7 +142,7 @@ yarn lint
 To run formating, run command
 
 ```sh
-yarn format
+pnpm format
 ```
 
 ### Accessibility (a11y)
