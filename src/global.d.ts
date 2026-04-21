@@ -1,3 +1,9 @@
+declare namespace jest {
+    interface Matchers<R> {
+        toBeInTheDocument(): R;
+    }
+}
+
 declare module 'feather-icons-react' {
     import type { FC } from 'react';
 

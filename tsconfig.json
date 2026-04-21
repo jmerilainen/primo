@@ -14,7 +14,7 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "module": "esnext",
-        "types": ["node", "jest", "testing-library__jest-dom"]
+        "types": ["node", "jest"]
     },
     "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules", "cypress"]
